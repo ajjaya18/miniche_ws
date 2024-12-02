@@ -1,0 +1,5 @@
+# Ignorar carpetas generadas por compilación
+build/
+install/
+log/
+
