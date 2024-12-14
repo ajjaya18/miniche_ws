@@ -21,7 +21,7 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    this_package = FindPackageShare('hyperdog_config')
+    this_package = FindPackageShare('mini_config')
 
     default_params_file_path = PathJoinSubstitution(
         [this_package, 'config/autonomy', 'slam.yaml']

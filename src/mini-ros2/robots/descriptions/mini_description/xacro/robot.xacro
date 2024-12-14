@@ -67,7 +67,7 @@
     </joint> -->
  
     <joint name="imu_joint" type="fixed">
-        <parent link="trunk"/>
+        <parent link="base_link"/>
         <child link="imu_link"/>
         <origin rpy="0 0 0" xyz="0 0 0"/>
     </joint>
