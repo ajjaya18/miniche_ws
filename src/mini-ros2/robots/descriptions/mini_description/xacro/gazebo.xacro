@@ -377,7 +377,7 @@
     name="lidar_joint"
     type="fixed">
     <origin
-      xyz="0 0 0.1"
+      xyz="0 0 0.05"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -393,15 +393,15 @@
     <sensor type="ray" name="lds_lfcd_sensor">
       <pose>0 0 0 0 0 0</pose>
       <always_on>true</always_on>
-      <update_rate>10.0</update_rate>
+      <update_rate>20.0</update_rate>
       <visualize>true</visualize>
       <ray>
         <scan>
           <horizontal>
             <samples>360</samples>
             <resolution>1</resolution>
-            <min_angle>0.0</min_angle>
-            <max_angle>6.28319</max_angle>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
           </horizontal>
         </scan>
         <range>

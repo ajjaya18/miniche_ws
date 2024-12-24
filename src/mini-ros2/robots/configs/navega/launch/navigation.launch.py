@@ -28,7 +28,7 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     this_package = FindPackageShare('navega')
 
-    default_map_path = PathJoinSubstitution([this_package, 'maps', 'map.yaml'])
+    default_map_path = PathJoinSubstitution([this_package, 'maps', 'mi_mapa_save.yaml'])
     nav2_param_file_path = PathJoinSubstitution([this_package, 'param', 'mini_pupper.yaml'])
     nav2_launch_path = PathJoinSubstitution(
         [FindPackageShare('nav2_bringup'), 'launch', 'bringup_launch.py']

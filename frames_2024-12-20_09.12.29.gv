@@ -1,0 +1,28 @@
+digraph G {
+"FL_thigh" -> "FL_calf"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"FL_hip" -> "FL_thigh"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"trunk" -> "FL_hip"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"base_link" -> "trunk"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"FR_thigh" -> "FR_calf"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"FR_hip" -> "FR_thigh"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"trunk" -> "FR_hip"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"RL_thigh" -> "RL_calf"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"RL_hip" -> "RL_thigh"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"trunk" -> "RL_hip"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"RR_thigh" -> "RR_calf"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"RR_hip" -> "RR_thigh"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"trunk" -> "RR_hip"[label=" Broadcaster: default_authority\nAverage rate: 250.0\nBuffer length: 4.888\nMost recent transform: 243.114\nOldest transform: 238.226\n"];
+"FL_calf" -> "FL_foot"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"FR_calf" -> "FR_foot"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"RL_calf" -> "RL_foot"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"RR_calf" -> "RR_foot"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_footprint" -> "base_link"[label=" Broadcaster: default_authority\nAverage rate: 49.588\nBuffer length: 4.86\nMost recent transform: 243.128\nOldest transform: 238.268\n"];
+"base_link" -> "imu_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "lidar_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"odom" -> "base_footprint"[label=" Broadcaster: default_authority\nAverage rate: 47.052\nBuffer length: 4.867\nMost recent transform: 243.068\nOldest transform: 238.201\n"];
+"map" -> "odom"[label=" Broadcaster: default_authority\nAverage rate: 10.238\nBuffer length: 4.2\nMost recent transform: 244.067\nOldest transform: 239.867\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1734703949.3569353"[ shape=plaintext ] ;
+}->"map";
+}
