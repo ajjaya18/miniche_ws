@@ -11,7 +11,7 @@ def amcl_pose_callback(msg):
     current_pose = msg.pose.pose
     print("Posición actual del robot actualizada: ({}, {})".format(current_pose.position.x, current_pose.position.y))
 
-def send_goal(node, position_x, position_y, orientation_z=0.0, orientation_w=1.0):
+def send_goal(node, position_x, position_y, orientation_z=0.0, orientation_w=1.0, times_list=None):
     global current_pose
 
     # Crear un publicador para el tópico /goal_pose
@@ -35,6 +35,9 @@ def send_goal(node, position_x, position_y, orientation_z=0.0, orientation_w=1.0
     goal_msg.pose.orientation.z = orientation_z
     goal_msg.pose.orientation.w = orientation_w
 
+    # Registrar el tiempo de inicio
+    start_time = time.time()
+
     # Publicar el mensaje en el tópico /goal_pose
     goal_publisher.publish(goal_msg)
 
@@ -46,8 +49,16 @@ def send_goal(node, position_x, position_y, orientation_z=0.0, orientation_w=1.0
         if current_pose is not None:
             distance_to_goal = ((current_pose.position.x - position_x) ** 2 +
                                 (current_pose.position.y - position_y) ** 2) ** 0.5
-            node.get_logger().info("Distancia al objetivo: {}".format(distance_to_goal))
+            node.get_logger().info("Distancia al objetivo: {:.2f}".format(distance_to_goal))
             if distance_to_goal < 0.5:  # Tolerancia de 0.5 metros
+                # Registrar el tiempo de finalización
+                end_time = time.time()
+                elapsed_time = end_time - start_time
+                node.get_logger().info("Tiempo para alcanzar el objetivo: {:.2f} segundos".format(elapsed_time))
+
+                # Guardar el tiempo y la meta en la lista de tiempos
+                if times_list is not None:
+                    times_list.append((position_x, position_y, elapsed_time))
                 break
         else:
             node.get_logger().warn("Esperando actualización de la posición del robot...")
@@ -66,10 +77,23 @@ def main(args=None):
             (3.024038076400757, 1.997838020324707)
         ]
 
+        # Lista para almacenar los tiempos registrados
+        times = []
+
         # Enviar las metas una por una en el orden especificado
         for position_x, position_y in goals:
-            send_goal(node, position_x, position_y, 0.0, 1.0)
+            send_goal(node, position_x, position_y, 0.0, 1.0, times)
             time.sleep(5.0)  # Esperar un breve tiempo después de enviar cada meta
+
+        # Imprimir los tiempos registrados
+        node.get_logger().info("Resultados:")
+        for position_x, position_y, elapsed_time in times:
+            node.get_logger().info("Meta: ({}, {}), Tiempo: {:.2f} segundos".format(position_x, position_y, elapsed_time))
+
+        # Guardar los resultados en un archivo
+        with open('resultados_tiempos.txt', 'w') as f:
+            for position_x, position_y, elapsed_time in times:
+                f.write("Meta: ({}, {}), Tiempo: {:.2f} segundos\n".format(position_x, position_y, elapsed_time))
 
     except KeyboardInterrupt:
         pass
@@ -80,3 +104,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
