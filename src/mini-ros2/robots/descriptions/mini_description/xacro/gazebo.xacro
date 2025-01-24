@@ -388,6 +388,7 @@
   </joint>
   
   <!-- GAZEBO LASER -->
+  
   <gazebo reference="lidar_link">
     <material>Gazebo/FlatBlack</material>
     <sensor type="ray" name="lds_lfcd_sensor">
